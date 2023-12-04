@@ -1,4 +1,4 @@
-# USER TASK MANAGMENT APP DOCUMENTATION
+# USER TASK MGT APP DOCUMENTATION
 
 
 Welcome to User Task Management This project is a simple runtime todo application backend that does not require a database.
@@ -16,9 +16,9 @@ README.md file
 git clone https://github.com/hibee-code/taskApp.git
 
 6. git add
-git add .
+ git add .
 7. git commit
-git commit -m "message"
+ git commit -m "message"
 
 8. initialize the project by running a code "npm init -y"
 9. Set up your environment variables
