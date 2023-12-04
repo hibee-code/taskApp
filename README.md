@@ -11,13 +11,13 @@ make a directory; mkdir <filename>
 cd into the filename.
 3. create a README file
 README.md file
-4. git init
-5. git clone te repository
-git clone https://github.com/hibee-code/taskApp.git
+4. `git init`
+5. `git clone te repository`
+[git clone] (https://github.com/hibee-code/taskApp.git)
 
-6. git add
+6. `git add`
  git add .
-7. git commit
+7. `git commit`
  git commit -m "message"
 
 8. initialize the project by running a code "npm init -y"
@@ -27,17 +27,15 @@ Create a .env file in the root of the project and add the following variables:
 
 PORT=3000
 For the PORT variable, please enter your preferred port number.
-
-11. Install dependencies
-npm install
-12. Run the server
-npm start
+# INSTALLING NODE PACKAGES
+11. npm install
+12. npm start
 The server will start running on the specified port, and you can now integrate it with your TodoAppFrontend.
 
 Important Note
 This project does not use a database and is designed to be a runtime todo application. Feel free to reach out if you have any questions or need further assistance!
 
-User Authentication and Todo API Documentation
+# User Authentication and TASK API Documentation
 Table of Contents
 User Authentication
 Register User
@@ -68,7 +66,7 @@ POST /api/register
 
 Request:
 {
-  "name": "exampleUser",
+  "username": "exampleUser",
   "email": "user@example.com",
   "password": "secretpassword"
 }
