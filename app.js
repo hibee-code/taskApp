@@ -19,6 +19,6 @@ app.use('/auth', router);
 
 
 
-app.listen(port,() =>{
+app.listen(port,() => {
     console.log(`server is running`)
 })
