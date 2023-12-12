@@ -1,6 +1,6 @@
-import { db } from "../config/db";
+import { db }from "../config/db.js";
 
- function createUser(username, email, password){
+ export function createUser(username, email, password){
   new Promise((resolve, reject) => {
     db.query(
       "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
@@ -16,9 +16,9 @@ import { db } from "../config/db";
   });
 }
 
-function findUserByEmail(email) {
+export function findUserByEmail(email) {
   new Promise((resolve, reject) => {
-    pool.query(
+    db.query(
       "SELECT * FROM users WHERE email = ?",
       [email],
       (error, results) => {
@@ -31,5 +31,3 @@ function findUserByEmail(email) {
     );
   });
 }
-  module.exports = { createUser, findUserByEmail}
-  export const { createUser, findUserByEmail } = userModel;

@@ -1,14 +1,15 @@
-import { hashPassword, comparePasswords} from "../utils";
-import { userModel } from "../model/userModel"
+import { hashPassword, comparePasswords} from "../utils/index.js";
+import { createUser, findUserByEmail }  from "../model/userModel.js"
+
 
 
 
 export async function register (req, res) {
-    const { username, email, password } = req.body;
-    const hashedPassword = await hashPassword(password);
-
     try {
-        const user = await userModel.createUser({
+        const { username, email, password } = req.body;
+        const hashedPassword = await hashPassword(password);
+
+        const user = createUser({
             username,
             email,
             hashedPassword,
@@ -25,10 +26,10 @@ export async function register (req, res) {
 
 
 export async function login(req, res) {
-    const { email, password } = req.body;
-
     try {
-        const user = await userModel.findUserByEmail(email);
+        const { email, password } = req.body;
+
+        const user = findUserByEmail(email);
 
         if (user && await comparePasswords(password, user.password)) {
             req.session.user = { id: user.id, email: user.email };
@@ -41,4 +42,3 @@ export async function login(req, res) {
     }
 }
 
-module.exports = { register, login};
