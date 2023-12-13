@@ -1,33 +1,30 @@
 import express from "express"
-import session from "express-session"
-import dotenv from "dotenv";
-import router from "./src/route/authRoute.js"
-import SESSION_SECRET from './src/config/env.js'
-import { db, dbName } from "./src/config/db.js"
+import dotenv from "dotenv"
+import { mysqlPool }  from './src/config/taskdb.js'
+import { sessionMiddleware } from "./src/middleware/index.js";
+import taskcreationRouter from "./src/route/taskcreatinRoute.js";
 
-
-//console.log(ENV)
-
-
-
-
-
-dotenv.config(); 
-
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT
 
-
 app.use(express.json());
-app.use(session({ secret: SESSION_SECRET, resave: true, saveUninitialized: true }));
-app.use('/auth', router);
+app.use(sessionMiddleware);
+
+
+app.use("/taskcreation", taskcreationRouter)
 
 
 
-app.listen(port,() => {
-    console.log(`server is running`)
-});
-db.connect();
-dbName.connect();
+
+
+try {
+    await mysqlPool.query("SELECT 1");
+    console.log('db connection succeeded.');
+    app.listen(3000, () => console.log(`server started at ${port}`));
+  } catch (err) {
+    console.log('db connection failed..' + err);
+  }
+  
 
