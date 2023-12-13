@@ -13,6 +13,8 @@ app.use(express.json());
 app.use(sessionMiddleware);
 
 
+app.use("/taskcreation", taskcreationRouter)
+
 
 app.use("/getAllTask", getAllTask)
 
