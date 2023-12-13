@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import { mysqlPool }  from './src/config/taskdb.js'
 import { sessionMiddleware } from "./src/middleware/index.js";
 import getAllTask from "./src/route/getAllTaskRoute.js";
+import router from "./src/route/getTaskIdRoute.js";
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use("/taskcreation", taskcreationRouter)
 
 
 app.use("/getAllTask", getAllTask)
+app.use("/taskId", router)
 
 
 try {
