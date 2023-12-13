@@ -2,7 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import { mysqlPool }  from './src/config/taskdb.js'
 import { sessionMiddleware } from "./src/middleware/index.js";
-import { updateTask } from "./src/controller/taskUpdateController.js";
+import deleteRouter from "./src/route/deleteTaskroute.js";
 
 
 dotenv.config();
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(sessionMiddleware);
 
 
-app.use("task",updateTask)
+app.use("/deleteTask", deleteRouter )
 
 
 try {
