@@ -2,6 +2,8 @@ import express from "express"
 import dotenv from "dotenv"
 import { mysqlPool }  from './src/config/taskdb.js'
 import { sessionMiddleware } from "./src/middleware/index.js";
+import getAllTask from "./src/route/getAllTaskRoute.js";
+
 dotenv.config();
 
 const app = express();
@@ -12,7 +14,7 @@ app.use(sessionMiddleware);
 
 
 
-
+app.use("/getAllTask", getAllTask)
 
 
 try {
