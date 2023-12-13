@@ -2,7 +2,8 @@ import express from "express"
 import dotenv from "dotenv"
 import { mysqlPool }  from './src/config/taskdb.js'
 import { sessionMiddleware } from "./src/middleware/index.js";
-import getAllTask from "./src/route/getAllTaskRoute.js";
+import { updateTask } from "./src/controller/taskUpdateController.js";
+
 
 dotenv.config();
 
@@ -13,10 +14,7 @@ app.use(express.json());
 app.use(sessionMiddleware);
 
 
-app.use("/taskcreation", taskcreationRouter)
-
-
-app.use("/getAllTask", getAllTask)
+app.use("task",updateTask)
 
 
 try {
